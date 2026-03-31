@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="contents/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="contents/css/compala.css">
+    <title>Willkommen an alle</title>
+</head>
+<body>
+    <div class="compala_container">
+        <section>
+            <h1 class="home_title">Compass: <h5 class="home__subtitle">Compala to Compass Data Pipeline</h5></h1>
+            <h2 class="compala_h2">Introduction</h2>
+            <p>
+                This project extends the <strong>Compala Data Vault framework</strong> into a full enterprise data platform, 
+                where curated and transformed data is delivered into a centralized warehouse called <strong>Compass</strong>.
+            </p>
+
+            <p>
+                The architecture follows a <strong>medallion approach</strong>, ensuring data progresses through structured layers 
+                from raw ingestion to refined, business-ready datasets.
+            </p>
+
+            <h3>Data Flow & Architecture</h3>
+            <ul class="compala_ul">
+                <li>Data from <strong>Compala Hub and Satellite tables</strong> is exposed through a source view</li>
+                <li>Transformation is applied based on business requirements</li>
+                <li>Data is loaded into the <strong>Compass warehouse</strong></li>
+                <li>Dimensional data is structured into <strong>dimension tables</strong></li>
+                <li>Transactional data from external systems is merged using <strong>primary keys</strong></li>
+                <li>Materialized views are created on top of dimensional data for performance optimization</li>
+                <li><strong>Performance improved by 20–30%</strong> compared to traditional data processing methods</li>
+            </ul>
+            <img src="./contents/images/compass_img.png" alt="" srcset="">
+            <h3>Analytics & Reporting Layer</h3>
+            <ul class="compala_ul">
+                <li>Materialized views are leveraged in <strong>datamarts</strong></li>
+                <li>Used for business reporting such as <strong>client contribution analysis</strong></li>
+                <li>Quarterly aggregations provide strategic insights for stakeholders</li>
+            </ul>
+
+            <h3>Reliability & Data Processing</h3>
+            <ul class="compala_ul">
+                <li>Raw files and parquet data are stored in <strong>Amazon S3</strong></li>
+                <li>Data is reprocessed from storage in case of failures</li>
+                <li>Implemented <strong>email alerts and monitoring</strong> for pipeline failures</li>
+                <li>Issues are proactively identified and communicated before impacting stakeholders</li>
+            </ul>
+
+            <h3>Automation & Optimization</h3>
+            <ul class="compala_ul">
+                <li>Automated workflows using scripts and Oracle-based configurations</li>
+                <li>Reduced <strong>80% of manual intervention</strong> in data processing</li>
+                <li>Improved consistency, reliability, and processing speed</li>
+            </ul>
+
+            <h3>Ownership & Impact</h3>
+            <p>
+                I owned the pipeline end-to-end from <strong>Compala to Compass</strong>, ensuring seamless data movement, 
+                transformation, and availability for downstream analytics. This resulted in:
+            </p>
+            <ul class="compala_ul">
+                <li>Improved data reliability and consistency</li>
+                <li>Faster issue resolution through proactive monitoring</li>
+                <li>Significant reduction in manual efforts</li>
+                <li>High-quality insights for client contribution and business decisions</li>
+            </ul><br>
+
+            <p>
+                💡 <strong>Key Outcome:</strong> A robust, automated, and scalable data platform delivering trusted data for enterprise reporting and analytics.
+            </p>
+        </section>    
+    </div>
+    <footer class="footer">
+        <div class="footer__bg">
+            <div class="footer__container container grid">
+                <div>
+                    <h1 class="footer__title">Aathi</h1>
+                    <span class="footer__subtitle">Azure Data Engineer</span>
+                </div>
+                <ul class="footer__links">
+                    <li>
+                        <a href="#services" class="footer__link">Spezifikationen</a>
+                    </li>
+                    <li>
+                        <a href="#portfolio" class="footer__link">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="footer__link">Kontaktieren Sie mich </a>
+                    </li>
+                </ul>
+                <div class="footer__socials">
+                    <a href="https://www.facebook.com/profile.php?id=100008416260749" target="_blank" class="footer__social">
+                        <i class="uil uil-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/t._.e._.d.__.d._.y/?igshid=NTc4MTIwNjQ2YQ" target="_blank" class="footer__social">
+                        <i class="uil uil-instagram"></i>                        
+                    </a>
+                    <a href="https://www.linkedin.com/in/aathi-raj-h-8255a71b0/" target="_blank" class="footer__social">
+                        <i class="uil uil-linkedin"></i>                            
+                    </a>
+                    <a href="https://github.com/Aathi-Raj-H" target="_blank" class="footer__social">
+                        <i class="uil uil-github"></i>                            
+                    </a>
+                </div>                
+            </div>
+            <p class="footer__copy">&#169; Aathiraj. Alle Rechte vorbehalten</p>
+        </div>
+    </footer>
+    
+    <a href="#" class="scrollup show-scroll" id="scroll-up">
+        <i class="uil uil-arrow-up scrollup__icon"></i>
+    </a>
+
+
+    <script src="contents/js/swiper-bundle.min.js"></script>
+    <script src="contents//js/index.js"></script>
+    
+    <script>
+        
+    </script>
+    
+</body>
+</html>

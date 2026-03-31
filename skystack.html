@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="contents/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="contents/css/compala.css">
+    <title>Willkommen an alle</title>
+</head>
+<body>
+    <div class="compala_container">
+        <section>
+            <h1 class="home_title">SkyStack: <h5 class="home__subtitle">A Modern Data Platform for Secure Advertising</h5></h1>
+            <h2 class="compala_h2">Introduction</h2>
+
+            <p>
+                This project was designed for an <strong>advertising company</strong> handling highly sensitive 
+                <strong>customer and banking data</strong>, where <strong>security, governance, and reliability</strong> were critical. 
+                The goal was to build a scalable, automated, and compliant data platform that supports both operational 
+                and analytical workloads while ensuring strict access control.
+            </p>
+
+            <h3>Azure Data Ecosystem & Governance</h3>
+            <p>
+                The Azure ecosystem was chosen to leverage its robust cloud-native capabilities, scalability, and 
+                strong enterprise security features. To ensure data protection and governance, 
+                <strong>Unity Catalog</strong> and <strong>RBAC</strong> were implemented. 
+                This allowed centralized control over data access, lineage tracking, and secure data sharing across teams, 
+                which is essential when handling sensitive financial information.
+            </p>
+
+            <ul class="compala_ul">
+                <li>Configured <strong>Unity Catalog</strong> for centralized governance, lineage, and metadata management</li>
+                <li>Implemented <strong>RBAC</strong> to enforce role-based access across users and teams</li>
+                <li>Ensured secure handling of sensitive banking and customer data</li>
+                <li>Enabled controlled and auditable data access across the platform</li>
+            </ul>
+
+            <img src="./contents/images/azure ded.png" alt="" srcset="">
+
+            <h3>Data Ingestion & File Processing</h3>
+            <p>
+                To handle incoming data efficiently, <strong>Apache NiFi</strong> was used for real-time routing and processing 
+                of files received from SharePoint. NiFi was chosen for its ability to manage data flows visually and handle 
+                priority-based processing, which is critical in advertising workflows where certain campaigns require faster processing.
+            </p>
+
+            <p>
+                Additionally, <strong>Azure Data Factory (ADF)</strong> was used to orchestrate scheduled and periodic data ingestion, 
+                ensuring reliable and automated movement of data into Azure Data Lake Storage.
+            </p>
+
+            <ul class="compala_ul">
+                <li>Processed incoming files from <strong>SharePoint</strong> into production paths</li>
+                <li>Used <strong>Apache NiFi</strong> for priority-based queue processing and routing</li>
+                <li>Configured alert mechanisms to notify teams on high-priority data processing</li>
+                <li>Implemented <strong>ADF pipelines</strong> for scheduled and automated ingestion</li>
+                <li>Ingested and stored data into <strong>Azure Data Lake Storage (ADLS)</strong></li>
+            </ul>
+
+            <h3>Data Vault Modeling & Warehouse Design</h3>
+            <p>
+                The <strong>Data Vault model</strong> was chosen due to its scalability, flexibility, and ability to handle 
+                historical data efficiently. This approach allows the system to adapt to changing business requirements 
+                without impacting existing structures, making it ideal for complex and evolving datasets.
+            </p>
+
+            <ul class="compala_ul">
+                <li>Designed and implemented <strong>Hubs, Links, and Satellites</strong> for structured modeling</li>
+                <li>Ingested transformed data into <strong>Azure SQL / SQL Server</strong></li>
+                <li>Maintained <strong>historical tracking</strong> and auditability of all data changes</li>
+                <li>Enabled scalable and modular data architecture</li>
+            </ul>
+
+            <h3>Data Transformation & Analytics</h3>
+            <p>
+                For transformation, <strong>dbt (data build tool)</strong> was used to create modular, testable, and reusable 
+                transformation pipelines. This improved maintainability and ensured consistency across transformation logic.
+                <strong>Azure Synapse Analytics</strong> was leveraged for high-performance querying and analytical processing, 
+                supporting business reporting such as client contribution analysis.
+            </p>
+
+            <ul class="compala_ul">
+                <li>Implemented transformations using <strong>dbt</strong></li>
+                <li>Processed and analyzed data using <strong>Azure Synapse Analytics</strong></li>
+                <li>Created data models for reporting and business intelligence</li>
+                <li>Supported <strong>client contribution analytics</strong> and quarterly reporting</li>
+            </ul>
+
+            <h3>Reliability, Monitoring & Automation</h3>
+            <p>
+                To ensure reliability, data pipelines were designed with fault tolerance in mind. 
+                Raw and processed data are stored in <strong>Amazon S3</strong>, enabling reprocessing in case of failures. 
+                Automated monitoring and alerting systems were implemented to notify teams proactively, reducing downtime 
+                and ensuring faster issue resolution.
+            </p>
+
+            <ul class="compala_ul">
+                <li>Stored raw and intermediate data in <strong>Amazon S3</strong></li>
+                <li>Enabled reprocessing of failed pipelines from stored files</li>
+                <li>Implemented <strong>alerts and email notifications</strong> for failures</li>
+                <li>Reduced manual intervention and improved issue resolution time</li>
+            </ul>
+
+            <h3>Orchestration & DevOps</h3>
+            <p>
+                To manage complex workflows, <strong>Apache Airflow</strong> is being used for orchestration, 
+                ensuring proper dependency management across pipelines. 
+                <strong>Azure DevOps</strong> handles CI/CD and production deployments, enabling automated and reliable releases.
+            </p>
+
+            <ul class="compala_ul">
+                <li>Orchestrating workflows using <strong>Apache Airflow</strong></li>
+                <li>Managing CI/CD pipelines with <strong>Azure DevOps</strong></li>
+                <li>Automating deployments and pipeline execution</li>
+                <li>Ensuring production-grade reliability and scalability</li>
+            </ul>
+
+            <h3>Impact & Results</h3>
+            <ul class="compala_ul">
+                <li>Reduced manual effort by approximately <strong>80%</strong> through automation</li>
+                <li>Improved data processing performance by <strong>20–30%</strong></li>
+                <li>Ensured secure and compliant handling of sensitive data</li>
+                <li>Delivered consistent and reliable data for business reporting</li>
+            </ul>
+            <br>
+            <p>
+                💡 <strong>Outcome:</strong> A secure, scalable, and automated data platform that ensures 
+                high data quality, strong governance, and reliable insights for business decision-making.
+            </p>
+        </section>            
+    </div>
+    <footer class="footer">
+        <div class="footer__bg">
+            <div class="footer__container container grid">
+                <div>
+                    <h1 class="footer__title">Aathi</h1>
+                    <span class="footer__subtitle">Azure Data Engineer</span>
+                </div>
+                <ul class="footer__links">
+                    <li>
+                        <a href="#services" class="footer__link">Spezifikationen</a>
+                    </li>
+                    <li>
+                        <a href="#portfolio" class="footer__link">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="footer__link">Kontaktieren Sie mich </a>
+                    </li>
+                </ul>
+                <div class="footer__socials">
+                    <a href="https://www.facebook.com/profile.php?id=100008416260749" target="_blank" class="footer__social">
+                        <i class="uil uil-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/t._.e._.d.__.d._.y/?igshid=NTc4MTIwNjQ2YQ" target="_blank" class="footer__social">
+                        <i class="uil uil-instagram"></i>                        
+                    </a>
+                    <a href="https://www.linkedin.com/in/aathi-raj-h-8255a71b0/" target="_blank" class="footer__social">
+                        <i class="uil uil-linkedin"></i>                            
+                    </a>
+                    <a href="https://github.com/Aathi-Raj-H" target="_blank" class="footer__social">
+                        <i class="uil uil-github"></i>                            
+                    </a>
+                </div>                
+            </div>
+            <p class="footer__copy">&#169; Aathiraj. Alle Rechte vorbehalten</p>
+        </div>
+    </footer>
+    
+    <a href="#" class="scrollup show-scroll" id="scroll-up">
+        <i class="uil uil-arrow-up scrollup__icon"></i>
+    </a>
+
+
+    <script src="contents/js/swiper-bundle.min.js"></script>
+    <script src="contents//js/index.js"></script>
+    
+    <script>
+        
+    </script>
+    
+</body>
+</html>

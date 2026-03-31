@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="contents/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="contents/css/compala.css">
+    <title>Willkommen an alle</title>
+</head>
+<body>
+    
+    <div class="compala_container">
+
+        <h1 class="home_title">Compala: <h5 class="home__subtitle">Data Vault–Driven Data Warehousing</h5></h1>
+        <!-- <h3 class="home__subtitle"> Data Vault–Driven Data Warehousing </h3> -->
+
+        <h2 class="compala_h2">Introduction</h2>
+        <p>
+        Compala is a data engineering project I worked on at <strong>BNP Paribas CIB</strong>, built using the <b>Data Vault modeling approach</b> to ingest, manage and structure dimensional data within a data warehouse.
+        </p>
+
+        <p>
+        Due to confidentiality, implementation specifics are not shared. This blog focuses on the 
+        <strong>conceptual architecture, modeling principles, and engineering practices</strong> behind the solution.
+        </p>
+        <section>
+            <h2>Context: Data in Investment Banking</h2>
+            <p>
+            In investment banking environments, systems handle <strong>large volumes of data</strong> flowing across multiple 
+            upstream and downstream systems. At BNP Paribas CIB, this required designing a scalable and auditable data architecture 
+            that could support:
+            </p>
+            <ul class="compala_ul">
+                <li>High-frequency data ingestion</li>
+                <li>Complex relationships between entities</li>
+                <li>Strict regulatory and audit requirements</li>
+                <li>Reliable downstream analytics and reporting</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Understanding Data: Facts vs Dimensions</h2>
+
+            <h3>📊 Fact Data</h3>
+            <p>
+            Fact data represents <strong>quantitative metrics</strong> used for aggregation and analysis.
+            </p>
+            <ul class="compala_ul">
+                <li>Total transaction volume</li>
+                <li>Revenue or sales figures</li>
+                <li>Quarterly performance metrics</li>
+            </ul>
+
+            <h3>🧾 Dimension Data</h3>
+            <p>
+            Dimension data provides <strong>context to facts</strong> by describing entities.
+            </p>
+            <ul class="compala_ul">
+                <li>Customer details (name, ID, address)</li>
+                <li>Product attributes</li>
+                <li>Account or employee metadata</li>
+            </ul>
+
+            <p><strong>Simple interpretation:</strong></p>
+            <ul class="compala_ul">
+            <li>Facts = “What happened?”</li>
+            <li>Dimensions = “Who / What / Where?”</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Why Data Vault?</h2>
+            <p>
+            Traditional models such as <strong>Star Schema</strong> and <strong>Snowflake Schema</strong> often struggle with:
+            </p>
+            <ul class="compala_ul">
+                <li>Scalability issues</li>
+                <li>Limited historical tracking</li>
+                <li>High impact from schema changes</li>
+            </ul>
+
+            <p>
+            The <strong>Data Vault model</strong> was chosen for Compala because it provides:
+            </p>
+            <ul class="compala_ul">
+                <li>Scalable and flexible architecture</li>
+                <li>Full historical tracking and auditability</li>
+                <li>Strong support for multi-source data integration</li>
+                <li>Schema agility for evolving business requirements</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Core Components of Data Vault</h2>
+
+            <h3>🧩 Hubs</h3>
+            <p>
+            Hubs store <strong>unique business keys</strong> representing core business entities.
+            </p>
+            <p>Example: Customer, Account, Order</p>
+
+            <h3>🔗 Links</h3>
+            <p>
+            Links capture <strong>relationships between hubs</strong>, including many-to-many relationships.
+            </p>
+            <p>Example: Customer ↔ Account</p>
+
+            <h3>📦 Satellites</h3>
+            <p>
+            Satellites store <strong>descriptive attributes and full historical changes</strong>.
+            </p>
+            <ul class="compala_ul">
+                <li>Customer name changes</li>
+                <li>Address updates</li>
+                <li>Status transitions</li>
+            </ul>
+        </section><br>
+        <img src="./contents/images/dv.jpeg" alt="" srcset=""><br>
+        <section>
+            <h2>Key Advantages of Data Vault</h2>
+
+            <h3> 1. Full Historical Tracking</h3>
+            <p>All changes are stored without overwriting previous data, ensuring complete auditability.</p>
+
+            <h3> 2. Schema Agility</h3>
+            <p>New attributes or sources can be added without impacting existing structures.</p>
+
+            <h3> 3. Decoupled Architecture</h3>
+            <p>
+            Separation of concerns:
+            <ul class="compala_ul">
+                <li>Hubs → Business keys</li>
+                <li>Links → Relationships</li>
+                <li>Satellites → Attributes</li>
+            </ul>
+            </p>
+
+            <h3> 4. Multi-Source Integration</h3>
+            <p>
+            Supports ingestion from ERP systems, APIs, flat files, and streaming sources, acting as a central data integration layer.
+            </p>
+
+            <h3> 5. Traceability & Lineage</h3>
+            <p>
+            Every record can be traced to its source, load time, and transformation steps — critical for compliance and audits.
+            </p>
+
+            <h3> 6. Parallel Data Loading</h3>
+            <p>
+            Independent loading of hubs, links, and satellites improves ingestion performance in distributed systems.
+            </p>
+
+            <h3> 7. Resilience to Change</h3>
+            <p>
+            Business keys remain stable even when attributes evolve, ensuring robustness.
+            </p>
+
+            <h3> 8. Raw Data Layer</h3>
+            <p>
+            Acts as a persistent single source of truth containing raw, cleansed, and historical data.
+            </p>
+
+            <h3> 9. Data Vault 2.0 Enhancements</h3>
+            <p>
+            Modern implementations are optimized for cloud and big data ecosystems, supporting:
+            </p>
+            <ul class="compala_ul">
+                <li>Automation and metadata-driven pipelines</li>
+                <li>Integration with tools like Databricks and Snowflake</li>
+                <li>Workflow orchestration using Airflow</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Hash Keys & Hash Diff</h2>
+
+            <h3>🔑 Hash Keys</h3>
+            <p>
+            Instead of natural keys, Data Vault uses <strong>hash-based keys</strong> to uniquely identify records.
+            </p>
+
+            <p class="highlight">
+            Customer_HK = HASH(Customer_ID)
+            </p>
+
+            <p>
+            These act as primary and foreign keys in hubs and links, ensuring:
+            </p>
+            <ul class="compala_ul">
+            <li>Consistency</li>
+            <li>Uniqueness</li>
+            <li>Better performance in distributed systems</li>
+            </ul>
+
+            <h3>🧠 Hash Diff (Change Detection)</h3>
+            <p>
+            Hash Diff detects changes in satellite data efficiently.
+            </p>
+
+            <p class="highlight">
+            HashDiff = HASH(Customer_Name + Address + Phone)
+            </p>
+
+            <p>
+            If the Hash Diff changes, a new record is inserted; otherwise, no update occurs. 
+            This eliminates the need for column-by-column comparisons and supports efficient incremental loads.
+            </p>
+        </section>
+        <img src="./contents/images/hash.jpeg" alt="Hash Diff Illustration" srcset=""><br>
+        <section>
+            <h2>Example Data Flow</h2>
+            <ul class="compala_ul">
+            <li>Data arrives from source systems</li>
+            <li>Hash Key is generated for unique identification</li>
+            <li>Data is stored in Hub tables</li>
+            <li>Hash Diff is calculated for attributes</li>
+            <li>Satellite tables check for changes</li>
+            <li>New changes are inserted; unchanged data is ignored</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Traditional vs Data Vault</h2>
+            <table border="1" cellpadding="6">
+            <tr>
+                <th>Feature</th>
+                <th>Traditional (Star/Snowflake)</th>
+                <th>Data Vault</th>
+            </tr>
+            <tr>
+                <td>Keys</td>
+                <td>Natural / Composite</td>
+                <td>Hash-based</td>
+            </tr>
+            <tr>
+                <td>Change Tracking</td>
+                <td>Manual</td>
+                <td>Automatic (Hash Diff)</td>
+            </tr>
+            <tr>
+                <td>Scalability</td>
+                <td>Limited</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td>History</td>
+                <td>Partial</td>
+                <td>Full</td>
+            </tr>
+            <tr>
+                <td>Architecture</td>
+                <td>Coupled</td>
+                <td>Decoupled</td>
+            </tr>
+            </table>
+        </section>
+        <section>
+            <h2>Key Takeaway</h2>
+            <p>
+            The Data Vault approach provides a <strong>scalable, flexible, and fully auditable</strong> data modeling framework, 
+            making it highly suitable for complex environments like investment banking.
+            </p>
+        </section>
+        <section>
+            <h2>Conclusion</h2>
+            <p>
+            Through the <strong>Compala project at BNP Paribas CIB</strong>, I worked on designing a Data Vault-based architecture 
+            capable of handling large-scale, multi-source financial data with strong governance and traceability.
+            </p>
+
+            <p>
+            By leveraging:
+            </p>
+            <ul class="compala_ul">
+                <li>Hubs, Links, and Satellites</li>
+                <li>Hash Keys and Hash Diff</li>
+                <li>Modular and decoupled architecture</li>
+            </ul>
+
+            <p>
+            the solution ensured <strong>data integrity, scalability, and compliance</strong> — which are critical in modern data platforms.
+            </p>
+        </section>     
+    </div>
+    
+    <footer class="footer">
+        <div class="footer__bg">
+            <div class="footer__container container grid">
+                <div>
+                    <h1 class="footer__title">Aathi</h1>
+                    <span class="footer__subtitle">Azure Data Engineer</span>
+                </div>
+                <ul class="footer__links">
+                    <li>
+                        <a href="#services" class="footer__link">Spezifikationen</a>
+                    </li>
+                    <li>
+                        <a href="#portfolio" class="footer__link">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="footer__link">Kontaktieren Sie mich </a>
+                    </li>
+                </ul>
+                <div class="footer__socials">
+                    <a href="https://www.facebook.com/profile.php?id=100008416260749" target="_blank" class="footer__social">
+                        <i class="uil uil-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/t._.e._.d.__.d._.y/?igshid=NTc4MTIwNjQ2YQ" target="_blank" class="footer__social">
+                        <i class="uil uil-instagram"></i>                        
+                    </a>
+                    <a href="https://www.linkedin.com/in/aathi-raj-h-8255a71b0/" target="_blank" class="footer__social">
+                        <i class="uil uil-linkedin"></i>                            
+                    </a>
+                    <a href="https://github.com/Aathi-Raj-H" target="_blank" class="footer__social">
+                        <i class="uil uil-github"></i>                            
+                    </a>
+                </div>                
+            </div>
+            <p class="footer__copy">&#169; Aathiraj. Alle Rechte vorbehalten</p>
+        </div>
+    </footer>
+    
+    <a href="#" class="scrollup show-scroll" id="scroll-up">
+        <i class="uil uil-arrow-up scrollup__icon"></i>
+    </a>
+
+
+    <script src="contents/js/swiper-bundle.min.js"></script>
+    <script src="contents//js/index.js"></script>
+    
+    <script>
+        
+    </script>
+    
+</body>
+</html>
